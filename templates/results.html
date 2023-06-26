@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Similarity Results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <h1>Similarity Results</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Phrase</th>
+                <th>Similarity Percentage %</th>
+                <th>Search Results</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+                <tr>
+                    <td>{{ result['phrase'] }}</td>
+                    <td>{{ result['similarity_score'] }} %</td>
+                    <td>
+                        <ul>
+                            {% for url in result['search_results'] %}
+                                <li><a href="{{ url }}" target="_blank">{{ url }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <footer>
+        <a href="https://github.com/dipenjava" target="_blank">GITHUB</a>
+    </footer>
+</body>
+</html>
